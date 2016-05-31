@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name" translatable="false">Bank</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="label_log_in">Log in</string>
+    <string name="alert_empty_field">Empty field</string>
+    <string name="alert_combination_wrong">This combination isn\'t right</string>
+    <string name="description">Description</string>
+    <string name="name">Name</string>
+    <string name="photo">Photo</string>
+    <string name="accept">Accept</string>
+    <string name="deny">Deny</string>
+</resources>

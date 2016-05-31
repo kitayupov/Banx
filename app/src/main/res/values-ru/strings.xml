@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="alert_empty_field">Пустое поле</string>
+    <string name="alert_combination_wrong">Комбинация не верна</string>
+    <string name="description">Описание</string>
+    <string name="hint_password">Пароль</string>
+    <string name="hint_username">Имя пользователя</string>
+    <string name="label_log_in">Войти</string>
+    <string name="name">ФИО</string>
+    <string name="photo">Фото</string>
+    <string name="status">Статус</string>
+</resources>
