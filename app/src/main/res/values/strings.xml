@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Bank</string>
+    <string name="app_name">Bank</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
     <string name="label_log_in">Log in</string>
@@ -8,6 +8,7 @@
     <string name="description">Description</string>
     <string name="name">Name</string>
     <string name="photo">Photo</string>
+    <string name="status">Status</string>
     <string name="accept">Accept</string>
     <string name="deny">Deny</string>
     <string name="ok_button">OK</string>

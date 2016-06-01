@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Банк</string>
     <string name="alert_empty_field">Пустое поле</string>
     <string name="alert_combination_wrong">Комбинация не верна</string>
     <string name="description">Описание</string>

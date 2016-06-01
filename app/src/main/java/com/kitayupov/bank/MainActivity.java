@@ -1,7 +1,6 @@
 package com.kitayupov.bank;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +19,7 @@ import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
+// Экран с заявками
 public class MainActivity extends AppCompatActivity {
 
     private static final int LAYOUT = R.layout.activity_main;
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         initControls();
     }
 
+    // Установка слушателя кнопки Назад
     @Override
     public void onBackPressed() {
         final RelativeLayout layout = (RelativeLayout) findViewById(R.id.main_root_layout);
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 }).show();
     }
 
+    // Инициализация пользователя
     private void initUser() {
         userId = getIntent().getIntExtra(Constants.USER, 0);
         switch (userId) {
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Инициализация элементов
     private void initControls() {
         arrayList = new ArrayList<>();
         dbHelper = new BidDbHelper(this);
@@ -77,14 +79,17 @@ public class MainActivity extends AppCompatActivity {
         if (listView != null) {
             listView.setAdapter(adapter);
             if (userId == Constants.OPERATOR_ID) {
+                // Инициализация области ввода данных
                 initEditor();
             } else {
+                // Регистрация всплывающего меню
                 registerForContextMenu(listView);
             }
             readData();
         }
     }
 
+    // Чтение базы данных
     private void readData() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(BidDbHelper.TABLE_NAME, null, null, null, null, null, null);
@@ -110,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Инициализация области ввода данных (user1)
     private void initEditor() {
         final LinearLayout editor = (LinearLayout) findViewById(R.id.editor_linearlayout);
         editor.setVisibility(View.VISIBLE);
@@ -117,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText nameEdit = (EditText) findViewById(R.id.name_edittext);
         Button okButton = (Button) findViewById(R.id.ok_button);
 
+        // Установка слушателя кнопки добавления новой заявки
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,23 +143,24 @@ public class MainActivity extends AppCompatActivity {
                     nameEdit.setText(null);
                     addBid(description, name);
                     descriptionEdit.requestFocus();
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(descriptionEdit.getWindowToken(), 0);
                 }
             }
         });
     }
 
+    // Добавление новой заявки
     private void addBid(String description, String name) {
         Bid item = new Bid(description, name, R.mipmap.ic_launcher);
         arrayList.add(item);
         adapter.notifyDataSetChanged();
         Log.d("kitayupov", item.toString());
 
+        // Добавление новой записи в БД
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.insert(BidDbHelper.TABLE_NAME, null, getValues(item));
     }
 
+    // Вспомогательный метод извлечения информации о заявке
     private ContentValues getValues(Bid item) {
         ContentValues values = new ContentValues();
         values.put(Constants.DESCRIPTION, item.getDescription());
@@ -164,12 +172,14 @@ public class MainActivity extends AppCompatActivity {
         return values;
     }
 
+    // Инициализация всплывающего меню (adm2, adm3)
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.context_menu, menu);
     }
 
+    // Регистрация действий всплывающего меню
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -183,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Изменение статуса выбранного элемента
     private void setItemStatus(int position, int itemId) {
         Bid item = arrayList.get(position);
         if (itemId == R.id.accept) {
@@ -194,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         Log.d("kitayupov", item.toString());
 
+        // Изменение записи БД
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         String whereClause =

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+// Адаптер списка заявок
 public class BidAdapter extends BaseAdapter {
 
     private Context context;
@@ -44,6 +45,7 @@ public class BidAdapter extends BaseAdapter {
         return view;
     }
 
+    // Заполнение кастомной формы
     private void fillView(View view, int position) {
         Bid item = getItem(position);
 
@@ -56,31 +58,21 @@ public class BidAdapter extends BaseAdapter {
         nameTextView.setText(item.getName());
         imageView.setImageResource(item.getImgRes());
 
+        // Статус заявки по умолчанию
         String status = "На рассмотрении";
 
+        // Если согласовано adm2 и adm3
         if (item.getStatusA().equals(Constants.Status.ACCEPT) &&
                 item.getStatusB().equals(Constants.Status.ACCEPT)) {
             status = "Согласовано";
         }
 
+        // Если отказано adm2 или adm3
         if (item.getStatusA().equals(Constants.Status.DENY) ||
                 item.getStatusB().equals(Constants.Status.DENY)) {
             status = "Отказано";
         }
 
         statusTextView.setText(status);
-//
-//        switch (item.getStatusA()) {
-//            case WAIT:
-//                status.setText("На рассмотрении");
-//                break;
-//            case DENY:
-//                status.setText("Отказано");
-//                break;
-//            case ACCEPT:
-//                status.setText("Согласовано");
-//                break;
-//        }
-
     }
 }

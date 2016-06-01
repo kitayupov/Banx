@@ -1,12 +1,18 @@
 package com.kitayupov.bank;
 
+// Класс заявок
 public class Bid {
 
+    // Описание
     private String description;
+    // ФИО
     private String name;
+    // Ссылка на ресурс фото
     private int imgRes;
+    // Статусы, присвоенные adm2,adm3
     private Constants.Status statusA;
     private Constants.Status statusB;
+    // Дата создания заявки
     private long date;
 
     public Bid(String description, String name, int imgRes) {
@@ -31,24 +37,12 @@ public class Bid {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getImgRes() {
         return imgRes;
-    }
-
-    public void setImgRes(int imgRes) {
-        this.imgRes = imgRes;
     }
 
     public Constants.Status getStatusA() {

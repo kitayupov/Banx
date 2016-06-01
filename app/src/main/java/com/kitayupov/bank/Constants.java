@@ -1,5 +1,6 @@
 package com.kitayupov.bank;
 
+// Класс хранения констант
 public class Constants {
 
     public static final String USER = "user";
