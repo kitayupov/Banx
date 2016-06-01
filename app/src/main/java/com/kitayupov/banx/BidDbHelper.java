@@ -34,8 +34,8 @@ public class BidDbHelper extends SQLiteOpenHelper {
 
     public static class BidTable implements BaseColumns {
         public static final String CREATE_QUERY = String.format(Locale.ROOT,
-                "create table %s (%s integer primary key autoincrement, %s text, %s text, %s numeric, %s text, %s text)",
-                TABLE_NAME, _ID, MainActivity.DESCRIPTION, MainActivity.NAME, MainActivity.PHOTO, MainActivity.STATUS_A, MainActivity.STATUS_B
+                "create table %s (%s integer primary key autoincrement, %s text, %s text, %s numeric, %s text, %s text, %s numeric)",
+                TABLE_NAME, _ID, MainActivity.DESCRIPTION, MainActivity.NAME, MainActivity.PHOTO, MainActivity.STATUS_A, MainActivity.STATUS_B, MainActivity.DATE
         );
     }
 }

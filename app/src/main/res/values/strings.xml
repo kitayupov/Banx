@@ -10,4 +10,7 @@
     <string name="photo">Photo</string>
     <string name="accept">Accept</string>
     <string name="deny">Deny</string>
+    <string name="ok_button">OK</string>
+    <string name="message_exit">Do you want to exit?</string>
+    <string name="button_yes">Yes</string>
 </resources>

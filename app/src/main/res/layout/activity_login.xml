@@ -15,29 +15,29 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/password_edittext"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/element_vertical_margin_small"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:ems="10"
+        android:gravity="center"
         android:hint="@string/hint_username"
-        android:inputType="textPersonName"
-        android:gravity="center" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/password_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/hint_password"
-        android:inputType="textPassword"
         android:layout_centerInParent="true"
-        android:gravity="center" />
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/label_log_in"
         android:layout_below="@+id/password_edittext"
-        android:layout_marginTop="@dimen/element_vertical_margin" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/label_log_in" />
 
 </RelativeLayout>

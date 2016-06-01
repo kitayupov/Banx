@@ -6,8 +6,8 @@ public class Bid {
     private String name;
     private int imgRes;
     private Constants.Status statusA;
-
     private Constants.Status statusB;
+    private long date;
 
     public Bid(String description, String name, int imgRes) {
         this.description = description;
@@ -15,14 +15,16 @@ public class Bid {
         this.imgRes = imgRes;
         this.statusA = Constants.Status.WAIT;
         this.statusB = Constants.Status.WAIT;
+        this.date = System.currentTimeMillis();
     }
 
-    public Bid(String description, String name, int imgRes, Constants.Status statusA, Constants.Status statusB) {
+    public Bid(String description, String name, int imgRes, Constants.Status statusA, Constants.Status statusB, long date) {
         this.description = description;
         this.name = name;
         this.imgRes = imgRes;
         this.statusA = statusA;
         this.statusB = statusB;
+        this.date = date;
     }
 
     public String getDescription() {
@@ -64,5 +66,14 @@ public class Bid {
         if (userId == Constants.ADMINISTRATOR2_ID) {
             statusB = status;
         }
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    @Override
+    public String toString() {
+        return description + " " + name + " " + statusA.name() + " " + statusB.name() + " " + date;
     }
 }

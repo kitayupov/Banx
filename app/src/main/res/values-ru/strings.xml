@@ -9,4 +9,9 @@
     <string name="name">ФИО</string>
     <string name="photo">Фото</string>
     <string name="status">Статус</string>
+    <string name="ok_button">ОК</string>
+    <string name="accept">Согласовано</string>
+    <string name="deny">Отказано</string>
+    <string name="button_yes">Да</string>
+    <string name="message_exit">Вы хотите выйти из программы?</string>
 </resources>
