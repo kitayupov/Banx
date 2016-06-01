@@ -25,13 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int LAYOUT = R.layout.activity_main;
 
-    public static final String DESCRIPTION = "description";
-    public static final String NAME = "name";
-    public static final String PHOTO = "photo";
-    public static final String STATUS_A = "status_a";
-    public static final String STATUS_B = "status_b";
-    public static final String DATE = "date";
-
     private ListView listView;
     private ArrayList<Bid> arrayList;
     private BidAdapter adapter;
@@ -50,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.root_layout);
+        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.main_root_layout);
         Snackbar.make(layout, R.string.message_exit, Snackbar.LENGTH_LONG)
                 .setAction(R.string.button_yes, new View.OnClickListener() {
                     @Override
@@ -96,20 +89,20 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query(BidDbHelper.TABLE_NAME, null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
-            int descriptionIndex = cursor.getColumnIndex(DESCRIPTION);
-            int nameIndex = cursor.getColumnIndex(NAME);
-            int photoIndex = cursor.getColumnIndex(PHOTO);
-            int statusAIndex = cursor.getColumnIndex(STATUS_A);
-            int statusBIndex = cursor.getColumnIndex(STATUS_B);
-            int dateIndex = cursor.getColumnIndex(DATE);
+            int descriptionIndex = cursor.getColumnIndex(Constants.DESCRIPTION);
+            int nameIndex = cursor.getColumnIndex(Constants.NAME);
+            int photoIndex = cursor.getColumnIndex(Constants.PHOTO);
+            int statusAIndex = cursor.getColumnIndex(Constants.STATUS_A);
+            int statusBIndex = cursor.getColumnIndex(Constants.STATUS_B);
+            int dateIndex = cursor.getColumnIndex(Constants.DATE);
             do {
                 String description = cursor.getString(descriptionIndex);
                 String name = cursor.getString(nameIndex);
                 int photoId = cursor.getInt(photoIndex);
                 Constants.Status statusA = Constants.Status.valueOf(cursor.getString(statusAIndex));
                 Constants.Status statusB = Constants.Status.valueOf(cursor.getString(statusBIndex));
-                int hash = cursor.getInt(dateIndex);
-                Bid item = new Bid(description, name, photoId, statusA, statusB, hash);
+                long date = cursor.getLong(dateIndex);
+                Bid item = new Bid(description, name, photoId, statusA, statusB, date);
                 arrayList.add(item);
                 Log.d("kitayupov", item.toString());
             } while (cursor.moveToNext());
@@ -162,12 +155,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ContentValues getValues(Bid item) {
         ContentValues values = new ContentValues();
-        values.put(DESCRIPTION, item.getDescription());
-        values.put(NAME, item.getName());
-        values.put(PHOTO, item.getImgRes());
-        values.put(STATUS_A, item.getStatusA().name());
-        values.put(STATUS_B, item.getStatusB().name());
-        values.put(DATE, item.getDate());
+        values.put(Constants.DESCRIPTION, item.getDescription());
+        values.put(Constants.NAME, item.getName());
+        values.put(Constants.PHOTO, item.getImgRes());
+        values.put(Constants.STATUS_A, item.getStatusA().name());
+        values.put(Constants.STATUS_B, item.getStatusB().name());
+        values.put(Constants.DATE, item.getDate());
         return values;
     }
 
@@ -204,7 +197,8 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         String whereClause =
-                DESCRIPTION + "=? and " + NAME + "=? and " + PHOTO + "=? and " + DATE + "=?";
+                Constants.DESCRIPTION + "=? and " + Constants.NAME + "=? and " +
+                        Constants.PHOTO + "=? and " + Constants.DATE + "=?";
         String[] whereArgs = new String[]{
                 item.getDescription(), item.getName(),
                 String.valueOf(item.getImgRes()), String.valueOf(item.getDate())};
