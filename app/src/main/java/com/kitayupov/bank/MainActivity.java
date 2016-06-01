@@ -1,4 +1,4 @@
-package com.kitayupov.banx;
+package com.kitayupov.bank;
 
 import android.content.ContentValues;
 import android.content.Context;

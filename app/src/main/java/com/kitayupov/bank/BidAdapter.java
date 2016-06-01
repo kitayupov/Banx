@@ -1,4 +1,4 @@
-package com.kitayupov.banx;
+package com.kitayupov.bank;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,10 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.kitayupov.banx.Bid;
-import com.kitayupov.banx.Constants;
-import com.kitayupov.banx.R;
 
 import java.util.List;
 
