@@ -99,7 +99,8 @@
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/camera" />
+            android:src="@drawable/camera"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/ok_button"

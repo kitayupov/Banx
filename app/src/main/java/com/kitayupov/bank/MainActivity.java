@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
         userId = getIntent().getIntExtra(Constants.USER, 0);
         switch (userId) {
             case 0:
-                setTitle("Operator");
+                setTitle("Operator 1");
                 break;
             case 1:
-                setTitle("Administrator 1");
+                setTitle("Administrator 2");
                 break;
             case 2:
-                setTitle("Administrator 2");
+                setTitle("Administrator 3");
                 break;
             default:
         }

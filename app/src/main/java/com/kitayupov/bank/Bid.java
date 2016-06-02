@@ -7,7 +7,7 @@ public class Bid {
     private String description;
     // ФИО
     private String name;
-    // Ссылка на ресурс фото
+    // Ссылка на ресурс фото (в реальном приложении - текстовый адрес ресурса)
     private int imgRes;
     // Статусы, присвоенные adm2,adm3
     private Constants.Status statusA;
