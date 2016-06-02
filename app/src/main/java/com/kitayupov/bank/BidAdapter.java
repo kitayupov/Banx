@@ -59,18 +59,18 @@ public class BidAdapter extends BaseAdapter {
         imageView.setImageResource(item.getImgRes());
 
         // Статус заявки по умолчанию
-        String status = "На рассмотрении";
+        String status = context.getString(R.string.status_wait);
 
         // Если согласовано adm2 и adm3
         if (item.getStatusA().equals(Constants.Status.ACCEPT) &&
                 item.getStatusB().equals(Constants.Status.ACCEPT)) {
-            status = "Согласовано";
+            status = context.getString(R.string.status_finished);
         }
 
         // Если отказано adm2 или adm3
         if (item.getStatusA().equals(Constants.Status.DENY) ||
                 item.getStatusB().equals(Constants.Status.DENY)) {
-            status = "Отказано";
+            status = context.getString(R.string.status_denied);
         }
 
         statusTextView.setText(status);

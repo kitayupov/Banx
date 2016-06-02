@@ -15,4 +15,7 @@
     <string name="deny">Отказано</string>
     <string name="button_yes">Да</string>
     <string name="message_exit">Вы хотите выйти из программы?</string>
+    <string name="status_wait">На рассмотрении</string>
+    <string name="status_finished">Завершена</string>
+    <string name="status_denied">Отказано</string>
 </resources>
